@@ -3,8 +3,18 @@
     padding: 0;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background-color: antiquewhite;
+body {
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(136.56deg, #8a53b6 0%, #cea2d0 97.42%) no-repeat;
+    font-family: 'Inter', 'LatoWeb', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+main {
+    width: 900px;
+    height: 300px;
+    background: white;
 }
