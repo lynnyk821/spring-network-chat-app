@@ -22,7 +22,7 @@ public class WebSocketEvenListener {
 
         if(username != null){
             log.info("User disconnected: {}", username);
-            var chatMessage = ChatMessage.builder()
+            ChatMessage chatMessage = ChatMessage.builder()
                     .type(MessageType.LEAVE)
                     .sender(username)
                     .build();

@@ -1,15 +1,43 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Network Chat Application</title>
-    <link th:href="@{styles.css}" rel="stylesheet">
+    <!--css-->
+    <link href="/css/chat.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/username.css" rel="stylesheet">
+    <!--js-->
+    <script src="/scripts/main.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js" defer></script>
 </head>
 <body>
-    <main>
-        <div th:class="output-messages"></div>
-        <div th:class="input-message"></div>
-    </main>
+
+<main id="username" class="hidden">
+    <div class="username-container">
+        <label class="username__label">Type your username to enter the Chatroom</label>
+        <form id="usernameForm">
+            <label class="form-group-1">
+                <input id="name" placeholder="Write your username">
+            </label>
+            <div class="form-group-2">
+                <button class="username-submit" type="submit">Start Chatting</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<main id="chat">
+    <div class="output-messages-container">
+        <div id="messagesOutput">
+
+        </div>
+    </div>
+    <div class="input-messages-container">
+        <input id="messageInput" placeholder="Write the message">
+    </div>
+</main>
+
 </body>
 </html>
