@@ -1,39 +1,62 @@
-#chat{
-    width: 800px;
-    height: 400px;
+#chatPage{
+    width: 660px;
+    height: 380px;
+    margin-bottom: 140px;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-container {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background: white;
     overflow: hidden;
-    background: white;
 }
 
-.input-messages-container{
+#messageArray {
     width: 100%;
-    height: 10%;
+    height: 75%;
+    padding-bottom: 7px;
     box-sizing: border-box;
-    background: white;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
-#messageInput{
-    width: 100%;
-    height: 100%;
-    padding-right: 5px;
-    box-sizing: border-box;
-}
-
-.output-messages-container{
-    width: 100%;
-    height: 90%;
-    padding: 18px;
-    box-sizing: border-box;
-    background-color: rgba(220, 220, 220, 0.3);
-    overflow-x: hidden;
-}
-
-#messagesOutput{
-    width: 100%;
-    height: 100%;
-    opacity: 0.8;
-}
-
-.user-x-message{
+.user-x-message {
     margin-bottom: 10px;
+}
+
+.splitter{
+    width: 100%;
+    border-bottom: solid #ccc 1.2px;
+}
+
+#messageForm{
+    width: 100%;
+    height: 25%;
+}
+.user__input-group{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#message{
+    width: 100%;
+    height: 52%;
+    padding-left: 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid rgb(204, 204, 204);
+    cursor: pointer;
+    background: rgb(128, 128, 128, 0.14);
+}
+
+#message:focus{
+    outline: none;
 }

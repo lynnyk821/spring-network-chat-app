@@ -1,4 +1,4 @@
-#username{
+#usernamePage{
     width: 480px;
     height: 200px;
     margin-bottom: 100px;
@@ -29,26 +29,38 @@
     justify-content: center;
 }
 
-.form-group-1, .form-group-2 {
+.username__form-group-1, .username__form-group-2 {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.form-group-1{
-    height: 20%;
+.username__form-group-1{
+    height: 30%;
     width: 75%;
+    margin-top: 20px;
     margin-right: 10px;
 }
-.form-group-2{
-    height: 20%;
+.username__form-group-2{
+    height: 30%;
     width: 25%;
+    margin-top: 20px;
 }
 
-#name{
+#username{
     width: 100%;
-    height: 88%;
+    height: 100%;
+    padding-left: 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: 1px solid rgb(204, 204, 204);
+    cursor: pointer;
+    background: rgb(128, 128, 128, 0.14);
 }
 .username-submit{
     width: 100%;
-    height: 110%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    cursor: pointer;
+    background: rgb(128, 128, 128, 0.14);
 }

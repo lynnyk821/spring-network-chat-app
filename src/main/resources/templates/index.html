@@ -8,34 +8,37 @@
     <link href="/css/styles.css" rel="stylesheet">
     <link href="/css/username.css" rel="stylesheet">
     <!--js-->
-    <script src="/scripts/main.js" defer></script>
+    <script src="/scripts/main.js" type="module"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js" defer></script>
 </head>
 <body>
 
-<main id="username" class="hidden">
+<main id="usernamePage">
     <div class="username-container">
         <label class="username__label">Type your username to enter the Chatroom</label>
-        <form id="usernameForm">
-            <label class="form-group-1">
-                <input id="name" placeholder="Write your username">
+        <div id="usernameForm">
+            <label class="username__form-group-1">
+                <input id="username" placeholder="Username">
             </label>
-            <div class="form-group-2">
-                <button class="username-submit" type="submit">Start Chatting</button>
+            <div class="username__form-group-2">
+                <button class="username-submit" id="usernameButton" type="submit">Start Chatting</button>
             </div>
-        </form>
+        </div>
     </div>
 </main>
 
-<main id="chat">
-    <div class="output-messages-container">
-        <div id="messagesOutput">
-
+<main id="chatPage" class="hidden">
+    <div class="chat-container">
+        <div id="messageArray">
+            <p class="user-x-message">Lynnyk Yarsolav: Hello</p>
         </div>
-    </div>
-    <div class="input-messages-container">
-        <input id="messageInput" placeholder="Write the message">
+        <div class="splitter"></div>
+        <div id="messageForm">
+            <div class="user__input-group">
+                <input id="message" placeholder="Type a message...">
+            </div>
+        </div>
     </div>
 </main>
 
