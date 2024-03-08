@@ -1,42 +1,68 @@
-import {addClassAttribute } from "./helpers.js";
-
 class Client {
     constructor(username) {
         this.username = username;
+        this.stompClient = Stomp.over(new SockJS('ws'));
     }
-    connect = () => {
-        if(username){
-            const socket = new SockJS('/ws');
-            const stompClient = Stomp.over(socket);
-
-            stompClient.connect({}, () => {
-                stompClient.subscribe('/topic/public', onMessageReceived);
-                stompClient.send("/app/chat.addUser", {},
-                    JSON.stringify({sender: this.username, type: 'JOIN'})
-                );
-            });
+    connect() {
+        this.stompClient.connect({}, () => {
+            this.stompClient.subscribe('/topic/public', this.onMessageReceived.bind(this));
+            this.stompClient.send("/app/chat.addUser", {}, JSON.stringify({ sender: this.username, type: 'JOIN' }));
+        });
+    }
+    sendMessage(message) {
+        this.stompClient.send("/app/chat.sendMessage", {},
+            JSON.stringify({ sender: this.username, content: message, type: 'CHAT' })
+        );
+    }
+    onMessageReceived(payload) {
+        const message = JSON.parse(payload.body);
+        this.handleEvent(message);
+    }
+    handleEvent(message) {
+        switch (message.type) {
+            case 'JOIN':
+                this.handleJoin(message.sender);
+                break;
+            case 'LEAVE':
+                this.handleLeave(message.sender);
+                break;
+            case 'CHAT':
+                this.handleChat(message.sender, message.content);
+                break;
+            default:
+                console.error('Unknown message type:', message.type);
         }
     }
+
+    handleJoin(username) {
+        const messageArrayElement = document.getElementById('messageArray');
+        const pElement = document.createElement('p');
+
+        pElement.className = 'event-message';
+        pElement.textContent = `${username} joined the chat.`;
+
+        messageArrayElement.appendChild(pElement);
+    }
+
+    handleLeave(username) {
+        const messageArrayElement = document.getElementById('messageArray');
+        const pElement = document.createElement('p');
+
+        pElement.className = 'event-message';
+        pElement.textContent = `${username} left the chat.`;
+
+        messageArrayElement.appendChild(pElement);
+    }
+
+    handleChat(sender, content) {
+        const messageArrayElement = document.getElementById('messageArray');
+        const pElement   = document.createElement('p');
+
+        pElement.className = 'event-message';
+        pElement.textContent = `${sender}: ${content}`;
+
+        messageArrayElement.appendChild(pElement);
+    }
 }
-function join(messageElement, message) {
-    message.content = message.sender + ' joined!';
-    addClassAttribute(messageElement, 'event-message');
-}
-
-function leave(messageElement, message) {
-    message.content = message.sender + ' left!';
-    addClassAttribute(messageElement, 'event-message');
-}
-
-function chat(messageElement, message) {
-    const usernameElement = document.createElement('span');
-    const usernameText = document.createTextNode(message.sender);
-
-    usernameElement.appendChild(usernameText);
-    messageElement.appendChild(usernameElement);
-
-    addClassAttribute(messageElement, 'chat-message');
-}
-
 
 export default Client;
