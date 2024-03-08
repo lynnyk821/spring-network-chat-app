@@ -1,34 +1,31 @@
-/*main.js*/
+import Client from "./client.js";
+import { getElementById } from "./helpers.js";
 
-import Client from "./stompClient.js";
-import { changePage } from "./changePage.js";
+const usernamePageElement = getElementById('usernamePage');
+const usernameElement = getElementById('username');
+const usernameButtonElement = getElementById('usernameButton');
 
-const usernameElement = document.getElementById('username');
-const usernameButtonElement = document.getElementById('usernameButton');
+const chatPageElement = getElementById('chatPage');
+const messageElement = getElementById('message');
 
-let client;
-
+let client= null;
 
 usernameButtonElement.addEventListener('click', ()=> {
     const username = usernameElement.value.trim();
     if(username){
-        changePage(username);
         client = new Client(username);
         client.connect();
+        usernamePageElement.classList.add('hidden');
+        chatPageElement.classList.remove('hidden');
     }
 });
 
-const messageElement = document.getElementById('message');
-
 messageElement.addEventListener('keydown', (event) => {
-    const username = usernameElement.value.trim();
     if (event.key === 'Enter') {
         const message = messageElement.value.trim();
-        if (message) {
-            if (client.stompClient && client.stompClient.connected) {
-                client.sendMessage(message);
-                messageElement.value = '';
-            }
+        if(message){
+            client.sendMessage(message);
+            messageElement.value = '';
         }
     }
 })

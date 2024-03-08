@@ -19,3 +19,9 @@ body {
 .hidden {
     display: none;
 }
+
+.splitter{
+    width: 100%;
+    border-bottom: solid #ccc 1px;
+    margin-bottom: 10px;
+}

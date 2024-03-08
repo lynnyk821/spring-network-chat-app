@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Network Chat Application</title>
+    <title>Spring Chat Application</title>
     <!--css-->
     <link href="/css/chat.css" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet">
@@ -30,14 +30,10 @@
 
 <main id="chatPage" class="hidden">
     <div class="chat-container">
-        <div id="messageArray">
-            <p class="user-x-message">Lynnyk Yarsolav: Hello</p>
-        </div>
+        <div id="messageArray"></div>
         <div class="splitter"></div>
-        <div id="messageForm">
-            <div class="user__input-group">
-                <input id="message" placeholder="Type a message...">
-            </div>
+        <div class="message-input-container">
+            <input id="message" placeholder="Type a message...">
         </div>
     </div>
 </main>
